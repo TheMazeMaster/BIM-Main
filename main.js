@@ -238,7 +238,13 @@ function drawRadialTier(svg, config, tierIndex, cx, cy, rotationOffset, defs) {
         srcIndex -= 1;
         srcTier = wheelConfig.tiers[srcIndex];
       }
-      const srcPair = srcTier.fill?.gradientPairs?.[i];
+      let srcPair;
+      if (Array.isArray(srcTier.fill?.gradientPairs)) {
+        const segsPerPair = wheelConfig.globalDivisionCount /
+          srcTier.fill.gradientPairs.length;
+        const pairIndex = Math.floor(i / segsPerPair);
+        srcPair = srcTier.fill.gradientPairs[pairIndex];
+      }
       if (srcPair && defs) {
         const gradId = `grad-${tierIndex}-${i}`;
         const grad = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
@@ -262,7 +268,10 @@ function drawRadialTier(svg, config, tierIndex, cx, cy, rotationOffset, defs) {
         defs.appendChild(grad);
         segmentFill = `url(#${gradId})`;
       } else if (srcTier.fill?.colorList) {
-        segmentFill = srcTier.fill.colorList[i] || segmentFill;
+        const segsPerColor = wheelConfig.globalDivisionCount /
+          srcTier.fill.colorList.length;
+        const colorIndex = Math.floor(i / segsPerColor);
+        segmentFill = srcTier.fill.colorList[colorIndex] || segmentFill;
       }
     } else if (config.fill?.colors?.[i]) {
       segmentFill = config.fill.colors[i];
