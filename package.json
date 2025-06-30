@@ -1,0 +1,10 @@
+{
+  "name": "bim-master",
+  "version": "1.0.0",
+  "description": "Master Build Specification wheel visualization",
+  "type": "module",
+  "license": "CC-BY-NC-4.0",
+  "scripts": {
+    "test": ""
+  }
+}
