@@ -37,6 +37,14 @@ h2 {
   border-radius: 50%;
 }
 
+.wheel-viewport {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
 /* === BUTTON STYLE === */
 button {
   padding: 6px 12px;
