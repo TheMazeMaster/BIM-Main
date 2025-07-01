@@ -178,7 +178,7 @@ const tiers = [
   {
     key: "T4",
     innerRadius: 120,
-    outerRadius: 220,
+    outerRadius: 500,
     rotationLocked: false,
     divisionWeights: t4Weights,
     labelList: [
@@ -198,7 +198,8 @@ const tiers = [
       fontSize: 6,
       fontWeight: "bold",
       anchor: "middle",
-      verticalAlign: "middle"
+      verticalAlign: "middle",
+      offset: -140
     },
     fill: {
       mode: "gradient-manual",
@@ -276,7 +277,11 @@ const tiers = [
       anchor: "middle",
       verticalAlign: "middle"
     },
-   // fill: { mode: "inherit" },
+    fill: {
+      mode: "solid",
+      startColor: "#00000000",
+      endColor: "#00000000"
+    },
     overlay: {
       mode: "shade",
       color: "#000000",
@@ -305,7 +310,11 @@ const tiers = [
       anchor: "start",
       verticalAlign: "middle"
     },
-    // fill: { mode: "inherit" },
+    fill: {
+      mode: "solid",
+      startColor: "#00000000",
+      endColor: "#00000000"
+    },
     overlay: {
       mode: "tint",
       color: "#ffffff",
@@ -371,6 +380,13 @@ const overlays = [
     radius: tiers[6].outerRadius,
     width: renderOptions.strokeDefaults.normal,
     color: "#000"
+  },
+  {
+    visible: true,
+    type: 'ringOutline',
+    radius: 220,
+    width: renderOptions.strokeDefaults.wide,
+    color: '#000'
   },
   {
     visible: true,

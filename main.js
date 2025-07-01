@@ -205,7 +205,9 @@ function drawRadialTier(svg, config, tierIndex, cx, cy, rotationOffset, defs) {
     path.setAttribute('d', d);
 
     let segmentFill = '#ccc';
-    if (config.fill?.mode === 'manual') {
+    if (config.fill?.mode === 'solid') {
+      segmentFill = config.fill.startColor || '#fff';
+    } else if (config.fill?.mode === 'manual') {
       segmentFill = config.fill.colorList?.[i] || segmentFill;
     } else if (config.fill?.mode === 'gradient-manual') {
       const pair = config.fill.gradientPairs?.[i];
