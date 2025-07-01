@@ -1,7 +1,9 @@
 // BIM Masterwheel — Full Configuration & Logic Specification
 
+// ---------- GLOBALS ----------
 const globalDivisionCount = 132;
 
+// ---------- HELPER FUNCTIONS ----------
 // Helper: Convert a list of weights into an array of cumulative angles
 // matching the global division count. This is used so tiers sharing
 // subdivisions can align perfectly without manually redefining angles.
@@ -56,11 +58,12 @@ const renderOptions = {
   },
 };
 
+// ---------- TIER LIST ----------
 /**
  * TIER CONTROL SYSTEM (T0 – T6)
  * Each tier defines radius, divisions, labels, styles, fill, and stroke logic.
  */
-const tiers = [
+const tiers = [  // Master configuration for all wheel rings
   // Tier 0
   {
     key: "T0",
@@ -329,6 +332,7 @@ const tiers = [
   }
 ];
 
+// ---------- OVERLAY SETUP ----------
 // Angles for T5 sub-division lines (based on T5 weights)
 const t5Angles = (() => {
   const weights = tiers[5].divisionWeights;
@@ -407,6 +411,7 @@ const overlays = [
 // `radialLines` overlays draw straight lines from `innerRadius` to `radius`
 // at each angle provided. `innerRadius` defaults to 0 if omitted.
 
+// ---------- FINAL EXPORT ----------
 /**
  * EXPORT FULL CONFIG
  */
