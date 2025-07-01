@@ -45,6 +45,12 @@ h2 {
   margin-bottom: 16px;
 }
 
+/* Wider viewport used for zoomed-in state */
+.wheel-viewport.zoomed {
+  width: 1200px;
+  height: 500px;
+}
+
 /* === BUTTON STYLE === */
 button {
   padding: 6px 12px;
