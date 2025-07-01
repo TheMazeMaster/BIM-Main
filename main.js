@@ -14,17 +14,20 @@ let zoomSlice = null;
 const zoomScale = 2;
 const zoomOffset = 300;
 const viewport = document.querySelector('.wheel-viewport');
-// Anchor point for wheel positioning (relative to the top-left of viewport)
-// Horizontal offset from the left edge. Set to `null` to center based on
-// the viewport width.
-const viewportAnchorX = null;
+
+// Viewport anchor positions for each zoom state
+const zoomedAnchorX = 0;       // left aligned when zoomed in
+const defaultAnchorX = null;   // centered when zoomed out
 
 function updateViewport() {
   if (!viewport) return;
+  viewport.classList.toggle('zoomed', zoomSlice !== null);
   const vw = viewport.clientWidth;
   const vh = viewport.clientHeight;
   let scale = 1;
-  const anchorX = viewportAnchorX !== null ? viewportAnchorX : vw / 2;
+  const anchorX = zoomSlice !== null
+    ? zoomedAnchorX
+    : (defaultAnchorX !== null ? defaultAnchorX : vw / 2);
   const anchorY = vh / 2;
   let offsetX = anchorX - wheelConfig.centerX;
   let offsetY = anchorY - wheelConfig.centerY;
