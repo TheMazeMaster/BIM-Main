@@ -4,7 +4,9 @@ import { wheelConfig } from './config.js';
 import { wheelData } from './wheelData.js';
 
 const svg = document.getElementById('dim-wheel');
+// Rotation index for global divisions; modified via the UI
 let currentRotation = 0;
+// Sequential ID generator for arc paths used by arc text
 let arcPathCounter = 0;
 
 // === RENDER ENTRY POINT ===
@@ -41,7 +43,7 @@ function renderWheel() {
   }
 }
 
-// === ROTATION BUTTONS ===
+// === BUTTON SETUP FUNCTIONS ===
 function setupRotationButtons() {
   document.querySelectorAll('[data-rotate]').forEach(btn => {
     const value = parseInt(btn.getAttribute('data-rotate'), 10);
@@ -67,7 +69,7 @@ function setupT6Buttons() {
   });
 }
 
-// === TIER RENDERING FUNCTIONS ===
+// === DRAWING HELPERS ===
 function drawTier(svg, tierConfig, tierIndex, cx, cy, rotationOffset, defs) {
   // 1) Respect the 'visible' flag (instead of the old 'show')
   if (!tierConfig.visible) return;
@@ -328,6 +330,7 @@ function drawRadialTier(svg, config, tierIndex, cx, cy, rotationOffset, defs) {
   }
 }
 
+// === OVERLAY LOGIC ===
 function drawOverlays(svg, overlays, cx, cy, defs, rotationOffset = 0) {
   overlays.forEach((ov, idx) => {
     if (ov.visible === false) return;
