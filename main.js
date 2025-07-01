@@ -172,6 +172,7 @@ function drawRing(svg, config, cx, cy) {
 function drawRadialTier(svg, config, tierIndex, cx, cy, rotationOffset, defs) {
   const count = config.divisionWeights.length;
   const full = wheelConfig.globalDivisionCount;
+  const gradientRadius = wheelConfig.tiers.at(-1).outerRadius;
   let currentAngle = (rotationOffset * 360) / full;
 
   for (let i = 0; i < count; i++) {
@@ -212,9 +213,8 @@ function drawRadialTier(svg, config, tierIndex, cx, cy, rotationOffset, defs) {
         const gradId = `grad-${tierIndex}-${i}`;
         const grad = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
         grad.setAttribute('id', gradId);
-        const midRadius = (inner + outer) / 2;
-        const startPt = polarToCartesian(cx, cy, midRadius, startAngle);
-        const endPt = polarToCartesian(cx, cy, midRadius, endAngle);
+        const startPt = polarToCartesian(cx, cy, gradientRadius, startAngle);
+        const endPt = polarToCartesian(cx, cy, gradientRadius, endAngle);
         grad.setAttribute('gradientUnits', 'userSpaceOnUse');
         grad.setAttribute('x1', startPt.x);
         grad.setAttribute('y1', startPt.y);
@@ -249,9 +249,8 @@ function drawRadialTier(svg, config, tierIndex, cx, cy, rotationOffset, defs) {
         const gradId = `grad-${tierIndex}-${i}`;
         const grad = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
         grad.setAttribute('id', gradId);
-        const midRadius = (srcTier.innerRadius + srcTier.outerRadius) / 2;
-        const startPt = polarToCartesian(cx, cy, midRadius, startAngle);
-        const endPt = polarToCartesian(cx, cy, midRadius, endAngle);
+        const startPt = polarToCartesian(cx, cy, gradientRadius, startAngle);
+        const endPt = polarToCartesian(cx, cy, gradientRadius, endAngle);
         grad.setAttribute('gradientUnits', 'userSpaceOnUse');
         grad.setAttribute('x1', startPt.x);
         grad.setAttribute('y1', startPt.y);
