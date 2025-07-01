@@ -198,7 +198,8 @@ const tiers = [
       fontSize: 6,
       fontWeight: "bold",
       anchor: "middle",
-      verticalAlign: "middle"
+      verticalAlign: "middle",
+      offset: -140
     },
     fill: {
       mode: "gradient-manual",
