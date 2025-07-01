@@ -164,7 +164,7 @@ Rotation logic clear and flexible
 Data sources external and switchable
 
 Overlay and color layers locked in for T4–T6
-See `CONFIG_SPEC.md` for a documentation snapshot of the configuration. `config.js` is the authoritative source.
+The wheel's configuration is fully defined in `config.js`.
 
 This document is the ground truth blueprint. Feed this to any AI code engine, and it will have zero ambiguity.
 
