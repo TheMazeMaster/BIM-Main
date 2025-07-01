@@ -14,7 +14,8 @@ Rendering Order: T0 → T6
 
 Draw Logic: Center-out, non-overlapping SVG segments
 
-Rotation: Optional; user-controlled via buttons
+Rotation Controls: Arrow buttons in `index.html` rotate the wheel in fixed steps
+and allow optional animation.
 
 🔧 Global Config Controls
 
@@ -110,7 +111,9 @@ labelListSource: Used in T6 to dynamically switch datasets
 
 availableSources: ["quotes", "emotion", "tone", "behavior", "thriveCounter"]
 
-Data is modular — content can be swapped by toggling source
+Data is modular — content can be swapped by toggling source.
+Edit `wheelData.js` and the dataset files (`quotes.js`, `emotion.js`,
+`tone.js`, `behavior.js`, `thriveCounter.js`) to change or add content.
 
 🧪 T6 Data Switching
 
@@ -165,6 +168,7 @@ Data sources external and switchable
 
 Overlay and color layers locked in for T4–T6
 The wheel's configuration is fully defined in `config.js`.
+The previous `CONFIG_SPEC.md` snapshot has been removed.
 
 This document is the ground truth blueprint. Feed this to any AI code engine, and it will have zero ambiguity.
 
