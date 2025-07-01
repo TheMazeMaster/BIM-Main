@@ -276,7 +276,7 @@ const tiers = [
       anchor: "middle",
       verticalAlign: "middle"
     },
-    fill: { mode: "inherit" },
+   // fill: { mode: "inherit" },
     overlay: {
       mode: "shade",
       color: "#000000",
@@ -305,7 +305,7 @@ const tiers = [
       anchor: "start",
       verticalAlign: "middle"
     },
-    fill: { mode: "inherit" },
+    // fill: { mode: "inherit" },
     overlay: {
       mode: "tint",
       color: "#ffffff",
