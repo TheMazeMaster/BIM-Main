@@ -142,6 +142,8 @@ overflow. `main.js` includes `zoomSlice`, `zoomScale`, and `zoomOffset`
 variables and an `updateViewport()` helper that applies a CSS transform so
 the chosen slice stays centered. Use the **Toggle Zoom** button in
 `index.html` to enable or disable zoom on the first slice.
+`updateViewport()` also respects a `viewportAnchorX` constant for positioning
+the wheel's center relative to the left edge of the viewport.
 
 🖼️ Overlays
 
