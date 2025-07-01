@@ -14,22 +14,26 @@ let zoomSlice = null;
 const zoomScale = 2;
 const zoomOffset = 300;
 const viewport = document.querySelector('.wheel-viewport');
+// Anchor point for wheel positioning (relative to the top-left of viewport)
+const viewportAnchorX = 0; // horizontal offset from left edge
 
 function updateViewport() {
   if (!viewport) return;
   const vw = viewport.clientWidth;
   const vh = viewport.clientHeight;
   let scale = 1;
-  let offsetX = vw / 2 - wheelConfig.centerX;
-  let offsetY = vh / 2 - wheelConfig.centerY;
+  const anchorX = viewportAnchorX;
+  const anchorY = vh / 2;
+  let offsetX = anchorX - wheelConfig.centerX;
+  let offsetY = anchorY - wheelConfig.centerY;
 
   if (zoomSlice !== null) {
     scale = zoomScale;
     const angle = ((zoomSlice + 0.5 + currentRotation) / wheelConfig.globalDivisionCount) * 2 * Math.PI - Math.PI / 2;
     const x = wheelConfig.centerX + zoomOffset * Math.cos(angle);
     const y = wheelConfig.centerY + zoomOffset * Math.sin(angle);
-    offsetX = vw / 2 - x * scale;
-    offsetY = vh / 2 - y * scale;
+    offsetX = anchorX - x * scale;
+    offsetY = anchorY - y * scale;
   }
 
   svg.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
