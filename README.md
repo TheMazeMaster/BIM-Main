@@ -135,6 +135,14 @@ and track the current rotation angle.
 
 T0–T2 have rotationLocked: true
 
+🔍 Zoom Viewport
+
+The wheel is wrapped in a `.wheel-viewport` container that hides any
+overflow. `main.js` includes `zoomSlice`, `zoomScale`, and `zoomOffset`
+variables and an `updateViewport()` helper that applies a CSS transform so
+the chosen slice stays centered. Use the **Toggle Zoom** button in
+`index.html` to enable or disable zoom on the first slice.
+
 🖼️ Overlays
 
 T4–T6 can include visual overlays via overlay block

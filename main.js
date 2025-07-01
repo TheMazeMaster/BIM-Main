@@ -9,6 +9,32 @@ let currentRotation = 0;
 // Sequential ID generator for arc paths used by arc text
 let arcPathCounter = 0;
 
+// === VIEWPORT / ZOOM ===
+let zoomSlice = null;
+const zoomScale = 2;
+const zoomOffset = 300;
+const viewport = document.querySelector('.wheel-viewport');
+
+function updateViewport() {
+  if (!viewport) return;
+  const vw = viewport.clientWidth;
+  const vh = viewport.clientHeight;
+  let scale = 1;
+  let offsetX = vw / 2 - wheelConfig.centerX;
+  let offsetY = vh / 2 - wheelConfig.centerY;
+
+  if (zoomSlice !== null) {
+    scale = zoomScale;
+    const angle = ((zoomSlice + 0.5 + currentRotation) / wheelConfig.globalDivisionCount) * 2 * Math.PI - Math.PI / 2;
+    const x = wheelConfig.centerX + zoomOffset * Math.cos(angle);
+    const y = wheelConfig.centerY + zoomOffset * Math.sin(angle);
+    offsetX = vw / 2 - x * scale;
+    offsetY = vh / 2 - y * scale;
+  }
+
+  svg.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+}
+
 // === RENDER ENTRY POINT ===
 function renderWheel() {
   arcPathCounter = 0;
@@ -41,6 +67,8 @@ function renderWheel() {
   if (wheelConfig.renderOptions?.debugRenderOutlines) {
     drawBoundaries(svg, wheelConfig.tiers, centerX, centerY);
   }
+
+  updateViewport();
 }
 
 // === BUTTON SETUP FUNCTIONS ===
@@ -51,6 +79,7 @@ function setupRotationButtons() {
       btn.addEventListener('click', () => {
         currentRotation = (currentRotation + value + wheelConfig.globalDivisionCount) % wheelConfig.globalDivisionCount;
         renderWheel();
+        updateViewport();
       });
     }
   });
@@ -64,8 +93,19 @@ function setupT6Buttons() {
       button.addEventListener('click', () => {
         wheelConfig.tiers[6].labelListSource = source;
         renderWheel();
+        updateViewport();
       });
     }
+  });
+}
+
+// === ZOOM CONTROL ===
+function setupZoomButton() {
+  const btn = document.getElementById('zoom-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    zoomSlice = zoomSlice === null ? 0 : null;
+    updateViewport();
   });
 }
 
@@ -484,4 +524,5 @@ function polarToCartesian(cx, cy, r, angleDeg) {
 // === INIT ===
 setupRotationButtons();
 setupT6Buttons();
+setupZoomButton();
 renderWheel();
