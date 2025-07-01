@@ -177,6 +177,8 @@ function drawRadialTier(svg, config, tierIndex, cx, cy, rotationOffset, defs) {
   const gradientRadius = wheelConfig.tiers.at(-1).outerRadius;
   let currentAngle = (rotationOffset * 360) / full;
 
+  const labelNodes = [];
+
   for (let i = 0; i < count; i++) {
     const weight = config.divisionWeights[i];
     const angle = (weight / full) * 360;
@@ -308,13 +310,14 @@ function drawRadialTier(svg, config, tierIndex, cx, cy, rotationOffset, defs) {
       text.setAttribute('dominant-baseline', config.labelStyle.verticalAlign || 'middle');
       text.setAttribute('transform', `rotate(${midAngle -90}, ${labelPos.x}, ${labelPos.y})`);
       text.textContent = config.labelList[i] || '';
-      svg.appendChild(text);
+      labelNodes.push(text);
     }
   }
 
   // Apply optional overlay effect across the entire tier
+  let overlayPath;
   if (config.overlay && config.overlay.visible !== false) {
-    const overlayPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    overlayPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     overlayPath.setAttribute('d', ringPath(cx, cy, config.innerRadius, config.outerRadius));
     overlayPath.setAttribute('fill', config.overlay.color || (config.overlay.mode === 'shade' ? '#000' : '#fff'));
     overlayPath.setAttribute('fill-opacity', config.overlay.strength ?? 0.25);
@@ -325,9 +328,13 @@ function drawRadialTier(svg, config, tierIndex, cx, cy, rotationOffset, defs) {
     } else if (config.overlay.mode === 'tint') {
       overlayPath.style.mixBlendMode = 'screen';
     }
+  }
 
+  if (overlayPath) {
     svg.appendChild(overlayPath);
   }
+
+  labelNodes.forEach(node => svg.appendChild(node));
 }
 
 // === OVERLAY LOGIC ===
