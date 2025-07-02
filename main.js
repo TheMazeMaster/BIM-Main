@@ -42,7 +42,8 @@ function updateViewport() {
     offsetY = anchorY - y * scale;
   }
 
-  svg.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+  // Apply scaling before translation so zoom occurs about the center
+  svg.style.transform = `scale(${scale}) translate(${offsetX}px, ${offsetY}px)`;
 }
 
 // === RENDER ENTRY POINT ===
