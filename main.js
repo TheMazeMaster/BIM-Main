@@ -88,7 +88,6 @@ function setupRotationButtons() {
       btn.addEventListener('click', () => {
         currentRotation = (currentRotation + value + wheelConfig.globalDivisionCount) % wheelConfig.globalDivisionCount;
         renderWheel();
-        updateViewport();
       });
     }
   });
@@ -102,7 +101,6 @@ function setupT6Buttons() {
       button.addEventListener('click', () => {
         wheelConfig.tiers[6].labelListSource = source;
         renderWheel();
-        updateViewport();
       });
     }
   });
