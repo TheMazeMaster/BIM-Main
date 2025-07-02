@@ -140,6 +140,7 @@ function drawCenteredText(svg, config, cx, cy) {
   text.setAttribute('font-size', config.labelStyle.fontSize || 16);
   text.setAttribute('font-weight', config.labelStyle.fontWeight || 'normal');
   text.setAttribute('fill', config.labelStyle.color || '#000');
+  text.setAttribute('transform', `rotate(-90, ${cx}, ${cy})`);
   text.textContent = config.label;
   svg.appendChild(text);
 }
@@ -166,7 +167,6 @@ function drawArcText(svg, config, cx, cy) {
   path.setAttribute('id', pathId);
   path.setAttribute('d', d);
   path.setAttribute('fill', 'none');
-  svg.appendChild(path);
 
   const textPath = document.createElementNS('http://www.w3.org/2000/svg', 'textPath');
   textPath.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', `#${pathId}`);
@@ -179,7 +179,11 @@ function drawArcText(svg, config, cx, cy) {
 
   const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
   text.appendChild(textPath);
-  svg.appendChild(text);
+  const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  group.setAttribute('transform', `rotate(-90, ${cx}, ${cy})`);
+  group.appendChild(path);
+  group.appendChild(text);
+  svg.appendChild(group);
 }
 
 function drawCircle(svg, config, cx, cy) {
