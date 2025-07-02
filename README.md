@@ -145,6 +145,11 @@ the chosen slice stays centered. Use the **Toggle Zoom** button in
 in, the viewport gains a `zoomed` class (1200×500) and the wheel is
 anchored to the left edge. When zoomed out, the viewport reverts to a
 500×500 square and the wheel is centered automatically.
+`zoomedAnchorX` and `defaultAnchorX` control these anchor positions.
+`zoomedAnchorX` locks the wheel to the left edge in the wide view,
+while `defaultAnchorX` defines the centered position for the
+500×500 state. Both constants live in `main.js` right above the
+`updateViewport()` helper for quick customization.
 
 🖼️ Overlays
 
