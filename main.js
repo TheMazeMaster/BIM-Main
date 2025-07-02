@@ -10,37 +10,25 @@ let currentRotation = 0;
 let arcPathCounter = 0;
 
 // === VIEWPORT / ZOOM ===
-let zoomSlice = null;
-const zoomScale = 2;
-const zoomOffset = 300;
+let isZoomed = false;
 const viewport = document.querySelector('.wheel-viewport');
 
-// Viewport anchor positions for each zoom state
-// Use the wheel's centerX so the left edge stays flush when zoomed.
-const zoomedAnchorX = wheelConfig.centerX;       // left aligned when zoomed in
-const defaultAnchorX = null;   // centered when zoomed out
+// Fixed transform presets for each state
+const TRANSFORM_ORIGIN = '50% 50%';
+const NORMAL_SCALE = 1;
+const NORMAL_OFFSET_X = -250;
+const NORMAL_OFFSET_Y = -250;
+const ZOOM_SCALE = 2;
+const ZOOM_OFFSET_X = -514;
+const ZOOM_OFFSET_Y = -150;
 
 function updateViewport() {
   if (!viewport) return;
-  viewport.classList.toggle('zoomed', zoomSlice !== null);
-  const vw = viewport.clientWidth;
-  const vh = viewport.clientHeight;
-  let scale = 1;
-  const anchorX = zoomSlice !== null
-    ? zoomedAnchorX
-    : (defaultAnchorX !== null ? defaultAnchorX : vw / 2);
-  const anchorY = vh / 2;
-  let offsetX = anchorX - wheelConfig.centerX;
-  let offsetY = anchorY - wheelConfig.centerY;
+  viewport.classList.toggle('zoomed', isZoomed);
 
-  if (zoomSlice !== null) {
-    scale = zoomScale;
-    const angle = ((zoomSlice + 0.5 + currentRotation) / wheelConfig.globalDivisionCount) * 2 * Math.PI - Math.PI / 2;
-    const x = wheelConfig.centerX + zoomOffset * Math.cos(angle);
-    const y = wheelConfig.centerY + zoomOffset * Math.sin(angle);
-    offsetX = anchorX - x * scale;
-    offsetY = anchorY - y * scale;
-  }
+  const scale = isZoomed ? ZOOM_SCALE : NORMAL_SCALE;
+  const offsetX = isZoomed ? ZOOM_OFFSET_X : NORMAL_OFFSET_X;
+  const offsetY = isZoomed ? ZOOM_OFFSET_Y : NORMAL_OFFSET_Y;
 
   // Apply scaling before translation so zoom occurs about the center
   svg.style.transform = `scale(${scale}) translate(${offsetX}px, ${offsetY}px)`;
@@ -113,7 +101,7 @@ function setupZoomButton() {
   const btn = document.getElementById('zoom-toggle');
   if (!btn) return;
   btn.addEventListener('click', () => {
-    zoomSlice = zoomSlice === null ? 0 : null;
+    isZoomed = !isZoomed;
     updateViewport();
   });
 }

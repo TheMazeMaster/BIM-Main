@@ -138,19 +138,23 @@ T0–T2 have rotationLocked: true
 🔍 Zoom Viewport
 
 The wheel is wrapped in a `.wheel-viewport` container that hides any
-overflow. `main.js` includes `zoomSlice`, `zoomScale`, and `zoomOffset`
-variables and an `updateViewport()` helper that applies a CSS transform so
-the chosen slice stays centered. Use the **Toggle Zoom** button in
-`index.html` to enable or disable zoom on the first slice. When zoomed
-in, the viewport gains a `zoomed` class (1200×500) and the wheel is
-anchored by its center along the left edge. When zoomed out, the
-viewport reverts to a 500×500 square and the wheel is centered
-automatically. `zoomedAnchorX` and `defaultAnchorX` control these
-anchor positions. `zoomedAnchorX` locks the wheel's center to the left
-edge in the wide view, while `defaultAnchorX` defines the centered
-position for the
-500×500 state. Both constants live in `main.js` right above the
-`updateViewport()` helper for quick customization.
+overflow. `main.js` now exposes a pair of static transform presets used by
+`updateViewport()`:
+
+```
+NORMAL_SCALE   = 1
+NORMAL_OFFSET_X = -250
+NORMAL_OFFSET_Y = -250
+ZOOM_SCALE     = 2
+ZOOM_OFFSET_X  = -514
+ZOOM_OFFSET_Y  = -150
+```
+
+The **Toggle Zoom** button simply switches between these presets. When
+zoomed in, the viewport gains a `zoomed` class (1200×500) and the wheel is
+anchored near the left edge. Zooming out restores the 500×500 viewport and
+centers the wheel. `TRANSFORM_ORIGIN` (50% 50%) is shared between the CSS
+and JavaScript so the scale happens about the wheel's center.
 
 🖼️ Overlays
 
