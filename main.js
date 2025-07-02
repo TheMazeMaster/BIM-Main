@@ -16,7 +16,8 @@ const zoomOffset = 300;
 const viewport = document.querySelector('.wheel-viewport');
 
 // Viewport anchor positions for each zoom state
-const zoomedAnchorX = 0;       // left aligned when zoomed in
+// Use the wheel's centerX so the left edge stays flush when zoomed.
+const zoomedAnchorX = wheelConfig.centerX;       // left aligned when zoomed in
 const defaultAnchorX = null;   // centered when zoomed out
 
 function updateViewport() {
