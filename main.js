@@ -14,7 +14,7 @@ let isZoomed = false;
 const viewport = document.querySelector('.wheel-viewport');
 
 // Fixed transform presets for each state
-const TRANSFORM_ORIGIN = '50% 50%';
+const TRANSFORM_ORIGIN = '70% 70%';
 const NORMAL_SCALE = 1.2;
 const NORMAL_OFFSET_X = -210;
 const NORMAL_OFFSET_Y = -210;
