@@ -15,12 +15,12 @@ const viewport = document.querySelector('.wheel-viewport');
 
 // Fixed transform presets for each state
 const TRANSFORM_ORIGIN = '50% 50%';
-const NORMAL_SCALE = 1;
-const NORMAL_OFFSET_X = -250;
-const NORMAL_OFFSET_Y = -250;
-const ZOOM_SCALE = 2;
-const ZOOM_OFFSET_X = -514;
-const ZOOM_OFFSET_Y = -150;
+const NORMAL_SCALE = 1.4;
+const NORMAL_OFFSET_X = -142;
+const NORMAL_OFFSET_Y = -145;
+const ZOOM_SCALE = 2.3;
+const ZOOM_OFFSET_X = -214;
+const ZOOM_OFFSET_Y = -100;
 
 function updateViewport() {
   if (!viewport) return;
@@ -117,12 +117,12 @@ function drawTier(svg, tierConfig, tierIndex, cx, cy, rotationOffset, defs) {
   // 3a) Centered text (T0)
   if (styleType === 'centered') {
     drawCircle(svg, tierConfig, cx, cy);
-    drawCenteredText(svg, tierConfig, cx, cy);
+    drawCenteredText(svg, tierConfig, cx+5, cy); //cx+5 changes "flow" postion
   }
   // 3b) Arc text (T1 & T2)
   else if (styleType === 'arcText') {
     drawRing(svg, tierConfig, cx, cy);
-    drawArcText(svg, tierConfig, cx, cy);
+    drawArcText(svg, tierConfig, cx+2, cy); // edit cx+# to edit T1 position
   }
   // 3c) Radial slices (T3–T6)
   else {
