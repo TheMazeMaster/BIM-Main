@@ -95,7 +95,7 @@ export const quotes = [
   "I probably overreacted anyway. Let’s just move on.",
   "You looked tired, I made your lunch and rearranged your day.",
   "Let me just handle it, it’s easier that way.",
-  "I just wanted you to know I’m always here, I got your groceries, dry cleaning, and booked your dentist.",
+  "I’m always here, I got your groceries, dry cleaning, and booked your dentist.",
   "You have to eat something. Come on, just for me.",
   "I gave everything for them. It’s just who I am.",
   "It’s fine, whatever you want is fine.",
