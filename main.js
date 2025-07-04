@@ -20,7 +20,7 @@ const NORMAL_OFFSET_X = -142;
 const NORMAL_OFFSET_Y = -145;
 const ZOOM_SCALE = 2;
 const ZOOM_OFFSET_X = -250;
-const ZOOM_OFFSET_Y = -200;
+const ZOOM_OFFSET_Y = -150;
 
 function updateViewport() {
   if (!viewport) return;
