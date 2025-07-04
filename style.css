@@ -39,8 +39,8 @@ h2 {
 }
 
 .wheel-viewport {
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
   position: relative;
   overflow: hidden;
   margin-bottom: 16px;
