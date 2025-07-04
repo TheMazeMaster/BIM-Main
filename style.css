@@ -48,8 +48,8 @@ h2 {
 
 /* Wider viewport used for zoomed-in state */
 .wheel-viewport.zoomed {
-  width: 740px;
-  height: 320px;
+  width: 1200px;
+  height: 500px;
 }
 
 /* === BUTTON STYLE === */
