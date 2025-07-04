@@ -19,7 +19,7 @@ const NORMAL_SCALE = 1.4;
 const NORMAL_OFFSET_X = -142;
 const NORMAL_OFFSET_Y = -145;
 const ZOOM_SCALE = 1.8;
-const ZOOM_OFFSET_X = -285;
+const ZOOM_OFFSET_X = -275;
 const ZOOM_OFFSET_Y = -215;
 
 function updateViewport() {
