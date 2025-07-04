@@ -18,7 +18,7 @@ const TRANSFORM_ORIGIN = '50% 50%';
 const NORMAL_SCALE = 1.4;
 const NORMAL_OFFSET_X = -142;
 const NORMAL_OFFSET_Y = -145;
-const ZOOM_SCALE = 2.3;
+const ZOOM_SCALE = 2;
 const ZOOM_OFFSET_X = -214;
 const ZOOM_OFFSET_Y = -100;
 
