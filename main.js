@@ -19,8 +19,8 @@ const NORMAL_SCALE = 1.4;
 const NORMAL_OFFSET_X = -142;
 const NORMAL_OFFSET_Y = -145;
 const ZOOM_SCALE = 2;
-const ZOOM_OFFSET_X = -214;
-const ZOOM_OFFSET_Y = -100;
+const ZOOM_OFFSET_X = -190; //left to right
+const ZOOM_OFFSET_Y = -142; //up and down
 
 function updateViewport() {
   if (!viewport) return;
