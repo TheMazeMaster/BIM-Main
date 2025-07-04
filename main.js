@@ -14,13 +14,13 @@ let isZoomed = false;
 const viewport = document.querySelector('.wheel-viewport');
 
 // Fixed transform presets for each state
-const TRANSFORM_ORIGIN = '70% 70%';
-const NORMAL_SCALE = 1.2;
-const NORMAL_OFFSET_X = -210;
-const NORMAL_OFFSET_Y = -210;
-const ZOOM_SCALE = 2.1;
-const ZOOM_OFFSET_X = -300;
-const ZOOM_OFFSET_Y = -163;
+const TRANSFORM_ORIGIN = '50% 50%';
+const NORMAL_SCALE = 1.4;
+const NORMAL_OFFSET_X = -142;
+const NORMAL_OFFSET_Y = -145;
+const ZOOM_SCALE = 2.3;
+const ZOOM_OFFSET_X = -214;
+const ZOOM_OFFSET_Y = -100;
 
 function updateViewport() {
   if (!viewport) return;
