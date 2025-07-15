@@ -1,136 +1,136 @@
 // === thriveCounter.js — Thrive Counter Dataset ===
 
 export const thriveCounter = [
-“I need a second, I’m starting to get tense.”
-“I’m getting overwhelmed, need space.”
-“I’ll blow if I don’t step out.”
-“I’m past talking, this could go bad.”
-“I’m upset, but I don’t want to escalate.”
-“I’m angry, but I’ll own my part.”
-“I need to calm down before I say something I regret.”
-“This isn’t justice, it’s pain recycling.”
-“Let’s find common ground instead.”
-“I value input, not just control.”
-“Leading doesn’t mean silencing.”
-“True strength allows room for others.”
-“I can let that land without fixing it.”
-“Let me hear what you saw in me first.”
-“Even if it’s hard, I’ll hear what I missed.”
-“I want to understand, not defend.”
-“It’s not worth my energy to get even.”
-“I’d rather break the cycle than continue it.”
-“I won’t let your harm shape my actions.”
-“Your pain doesn’t justify mine.”
-"I can stay with this for a sec."
-"I'll try to stay with the discomfort."
-"I want to show up even when it’s hard."
-"I’ll take a breath and stay in."
-"Let’s slow down and track together."
-"Let me pause and gather what’s real."
-"I can feel this and stay in the room."
-"Even chaos has a pattern. I’m still here."
-"I don’t need to mask what I feel."
-"This hurt, and I don’t know what to do."
-"I can take my part without losing face."
-"I don’t need to punish to be heard."
-"I can stay present and still feel safe."
-"I’ll try to stay open, even when it’s hard."
-"I’ll stay long enough to be understood."
-"I matter enough to stay in the room."
-"I'll bring it up now, not later."
-"Even if it's hard, I’ll face it head-on."
-"I'm showing up even when I want to run."
-"Avoiding it makes it worse. I’m here now."
-"Yes or no — I’m choosing."
-"I’d rather be clear than clever."
-"If it’s real, I’ll face it openly."
-"Here’s what’s really going on with me."
-"I'm okay being seen while I find my words."
-"Let’s stay with this — I can handle discomfort."
-"Take your time, but stay with me here."
-"You’re safe here. Let it move through."
-"I’m here. I can stay with this."
-"Let’s stay real — we’re safe right now."
-"I know it’s hard — I’m right here with you."
-"You don’t need to agree. Just stay honest."
-"Take a breath. One thing at a time."
-"Let’s start with what’s most important."
-"We don’t need to fix it. Just name what’s here."
-"You’re not alone. I’ll stay connected until you’re ready."
-"It’s okay to pause. I’m still here."
-"Even if you can’t feel it — I’ll hold space."
-"You don’t have to do anything. You’re safe."
-"I’m with you. You’re not invisible."
-"I see you. Let’s come back together."
-"You’re here now. That matters."
-"You belong to this body. You are safe here."
-"Come home to you. I’ll meet you there."
-"It’s okay to shift — even a little."
-"You get to choose again — now."
-"You’re safe now. You don’t have to hide."
-"Breathe with me. You’re back in your body."
-"What do you want?"
-"You can pause. You can check in."
-"If it doesn’t feel right — stop."
-"Your 'no' matters. Even now."
-"Your thoughts matter, too."
-"You can disagree without harm."
-"Calm doesn’t have to cost your clarity."
-"You deserve to be seen — even in disagreement."
-"Closeness grows when both people breathe freely."
-"You don’t need to vanish to feel safe."
-"You’re allowed space and love."
-"You are allowed to exist — even if they walk away."
-"You can say no without being wrong."
-"You don’t need to agree to keep the peace."
-"Your needs matter — even if they rock the boat."
-"Your truth is not a threat."
-"Their mood isn’t your job."
-"You can be liked without losing yourself."
-"You’re not a mirror — you're a person."
-"You don’t have to shape-shift to be worthy."
-"It’s okay to want what you want."
-"Don’t trade truth for temporary calm."
-"You’re not responsible for their storm."
-"Peace isn’t real if it costs your voice."
-"They don’t need you to rescue what isn’t sinking."
-"Care doesn’t require control."
-"You can love them without losing yourself."
-"You’re more than what you do for others."
-"It’s okay to matter in this moment."
-"Love doesn’t ask you to vanish in its name."
-"You’re lovable as you are, not as you perform."
-"The bond you bleed for isn’t love — it’s sacrifice."
-"Connection flows from comfort within."
-"You’re not alone — even when you’re alone."
-"Your presence is enough, even without their echo."
-"Stillness isn’t abandonment — it’s where your self waits."
-"A little presence can hold a lot of weight."
-"Seeing you matters more than solving you."
-"Your burden isn’t too much to hold — and neither are you."
-"Care isn’t control — you can stay beside without taking over."
-"Every bond starts with a bridge, not a blueprint."
-"Connection is built by showing up — again and again."
-"Bonding isn’t about fusion — it’s about rhythm."
-"A strong bond bends with time — it doesn’t demand return."
-"Support doesn’t mean stepping in — it means standing by."
-"To support is to walk beside, not to pull forward."
-"Holding space is sometimes stronger than giving answers."
-"Support respects boundaries — even in love."
-"To protect isn’t to block — it’s to buffer."
-"Protection can feel like love when done with clarity."
-"Real care means protecting without possession."
-"Protection that stifles is protection that wounds."
-"Holding a boundary is a form of holding yourself and the other."
-"A clear no can be the kindest truth."
-"Boundaries aren’t barriers. They are bridges to healthy connection."
-"Sometimes the most loving act is to walk away."
-"True help starts with presence, not pressure."
-"Support is action born of understanding, not control."
-"Sometimes love speaks with a strong voice and a steady hand."
-"Leadership is knowing when to act — even when it’s not welcomed."
-"Support that honours choice empowers the one being helped."
-"Guidance isn't control — it's care made clear."
-"Real care is sometimes the uncomfortable truth, spoken with love."
+“I need a second, I’m starting to get tense.”,
+“I’m getting overwhelmed, need space.”,
+“I’ll blow if I don’t step out.”,
+“I’m past talking, this could go bad.”,
+“I’m upset, but I don’t want to escalate.”,
+“I’m angry, but I’ll own my part.”,
+“I need to calm down before I say something I regret.”,
+“This isn’t justice, it’s pain recycling.”,
+“Let’s find common ground instead.”,
+“I value input, not just control.”,
+“Leading doesn’t mean silencing.”,
+“True strength allows room for others.”,
+“I can let that land without fixing it.”,
+“Let me hear what you saw in me first.”,
+“Even if it’s hard, I’ll hear what I missed.”,
+“I want to understand, not defend.”,
+“It’s not worth my energy to get even.”,
+“I’d rather break the cycle than continue it.”,
+“I won’t let your harm shape my actions.”,
+“Your pain doesn’t justify mine.”,
+"I can stay with this for a sec.",
+"I'll try to stay with the discomfort.",
+"I want to show up even when it’s hard.",
+"I’ll take a breath and stay in.",
+"Let’s slow down and track together.",
+"Let me pause and gather what’s real.",
+"I can feel this and stay in the room.",
+"Even chaos has a pattern. I’m still here.",
+"I don’t need to mask what I feel.",
+"This hurt, and I don’t know what to do.",
+"I can take my part without losing face.",
+"I don’t need to punish to be heard.",
+"I can stay present and still feel safe.",
+"I’ll try to stay open, even when it’s hard.",
+"I’ll stay long enough to be understood.",
+"I matter enough to stay in the room.",
+"I'll bring it up now, not later.",
+"Even if it's hard, I’ll face it head-on.",
+"I'm showing up even when I want to run.",
+"Avoiding it makes it worse. I’m here now.",
+"Yes or no — I’m choosing.",
+"I’d rather be clear than clever.",
+"If it’s real, I’ll face it openly.",
+"Here’s what’s really going on with me.",
+"I'm okay being seen while I find my words.",
+"Let’s stay with this — I can handle discomfort.",
+"Take your time, but stay with me here.",
+"You’re safe here. Let it move through.",
+"I’m here. I can stay with this.",
+"Let’s stay real — we’re safe right now.",
+"I know it’s hard — I’m right here with you.",
+"You don’t need to agree. Just stay honest.",
+"Take a breath. One thing at a time.",
+"Let’s start with what’s most important.",
+"We don’t need to fix it. Just name what’s here.",
+"You’re not alone. I’ll stay connected until you’re ready.",
+"It’s okay to pause. I’m still here.",
+"Even if you can’t feel it — I’ll hold space.",
+"You don’t have to do anything. You’re safe.",
+"I’m with you. You’re not invisible.",
+"I see you. Let’s come back together.",
+"You’re here now. That matters.",
+"You belong to this body. You are safe here.",
+"Come home to you. I’ll meet you there.",
+"It’s okay to shift — even a little.",
+"You get to choose again — now.",
+"You’re safe now. You don’t have to hide.",
+"Breathe with me. You’re back in your body.",
+"What do you want?",
+"You can pause. You can check in.",
+"If it doesn’t feel right — stop.",
+"Your 'no' matters. Even now.",
+"Your thoughts matter, too.",
+"You can disagree without harm.",
+"Calm doesn’t have to cost your clarity.",
+"You deserve to be seen — even in disagreement.",
+"Closeness grows when both people breathe freely.",
+"You don’t need to vanish to feel safe.",
+"You’re allowed space and love.",
+"You are allowed to exist — even if they walk away.",
+"You can say no without being wrong.",
+"You don’t need to agree to keep the peace.",
+"Your needs matter — even if they rock the boat.",
+"Your truth is not a threat.",
+"Their mood isn’t your job.",
+"You can be liked without losing yourself.",
+"You’re not a mirror — you're a person.",
+"You don’t have to shape-shift to be worthy.",
+"It’s okay to want what you want.",
+"Don’t trade truth for temporary calm.",
+"You’re not responsible for their storm.",
+"Peace isn’t real if it costs your voice.",
+"They don’t need you to rescue what isn’t sinking.",
+"Care doesn’t require control.",
+"You can love them without losing yourself.",
+"You’re more than what you do for others.",
+"It’s okay to matter in this moment.",
+"Love doesn’t ask you to vanish in its name.",
+"You’re lovable as you are, not as you perform.",
+"The bond you bleed for isn’t love — it’s sacrifice.",
+"Connection flows from comfort within.",
+"You’re not alone — even when you’re alone.",
+"Your presence is enough, even without their echo.",
+"Stillness isn’t abandonment — it’s where your self waits.",
+"A little presence can hold a lot of weight.",
+"Seeing you matters more than solving you.",
+"Your burden isn’t too much to hold — and neither are you.",
+"Care isn’t control — you can stay beside without taking over.",
+"Every bond starts with a bridge, not a blueprint.",
+"Connection is built by showing up — again and again.",
+"Bonding isn’t about fusion — it’s about rhythm.",
+"A strong bond bends with time — it doesn’t demand return.",
+"Support doesn’t mean stepping in — it means standing by.",
+"To support is to walk beside, not to pull forward.",
+"Holding space is sometimes stronger than giving answers.",
+"Support respects boundaries — even in love.",
+"To protect isn’t to block — it’s to buffer.",
+"Protection can feel like love when done with clarity.",
+"Real care means protecting without possession.",
+"Protection that stifles is protection that wounds.",
+"Holding a boundary is a form of holding yourself and the other.",
+"A clear no can be the kindest truth.",
+"Boundaries aren’t barriers. They are bridges to healthy connection.",
+"Sometimes the most loving act is to walk away.",
+"True help starts with presence, not pressure.",
+"Support is action born of understanding, not control.",
+"Sometimes love speaks with a strong voice and a steady hand.",
+"Leadership is knowing when to act — even when it’s not welcomed.",
+"Support that honours choice empowers the one being helped.",
+"Guidance isn't control — it's care made clear.",
+"Real care is sometimes the uncomfortable truth, spoken with love.",
 "Sometimes love sounds like 'no,' feels like steel, and still heals."
 ];
