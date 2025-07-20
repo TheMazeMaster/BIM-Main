@@ -109,7 +109,7 @@ labelList: Local list of strings or generated (e.g. T5 modifiers)
 
 labelListSource: Used in T6 to switch which overlay field is shown
 
-availableSources: ["quotes", "emotion", "tone", "behavior", "thriveCounter"]
+availableSources: ["overlayContent"]
 
 T6 labels now come entirely from `overlayContent.js`, which contains 132
 rows of 25 fields. Key indexes are:
@@ -125,13 +125,13 @@ stand‑alone dataset files have been removed.
 
 🧪 T6 Data Switching
 
-T6 label set is dynamic
+T6 label set is dynamic.
+Button-style UI options change `tiers[6].labelListSource` to select
+different fields from `wheelData` (quotes, emotion, tone, behavior, etc.).
+The `availableSources` array no longer lists these options—datasets are
+defined entirely in `wheelData.js`.
 
-Button-style UI options allow live toggling between datasets
-
-Entire dataset is pulled via labelListSource key
-
-Each T6 state maps 1:1 with existing 132 segment structure
+Each T6 state maps 1:1 with the existing 132 segment structure.
 
 🔄 Rotation Modes
 

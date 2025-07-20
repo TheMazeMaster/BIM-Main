@@ -305,8 +305,8 @@ const tiers = [  // Master configuration for all wheel rings
     outerRadius: 500,
     rotationLocked: false,
     divisionWeights: t4DivisionAngles.map(() => 1),
-    labelListSource: "quotes",
-    availableSources: ["quotes", "emotion", "tone", "behavior", "thriveCounter"],
+    labelListSource: "overlayContent",
+    availableSources: ["overlayContent"],
     labelStyle: {
       type: "radial",
       fontSize: 6,
@@ -423,5 +423,5 @@ export const wheelConfig = {
   renderOptions,
   tiers,
   overlays,
-  availableSources: ["quotes", "emotion", "tone", "behavior", "thriveCounter"]
+  availableSources: ["overlayContent"]
 };
