@@ -2,11 +2,11 @@
 
 import overlayContent from './overlayContent.js';
 
-const quotes = overlayContent.map(o => o[21]);
-const emotion = overlayContent.map(o => o[22]);
-const tone = overlayContent.map(o => o[20]);
-const behavior = overlayContent.map(o => o[19]);
-const thriveCounter = overlayContent.map(o => o[24]);
+const quotes = overlayContent.map(o => o[19]);
+const emotion = overlayContent.map(o => o[20]);
+const tone = overlayContent.map(o => o[18]);
+const behavior = overlayContent.map(o => o[17]);
+const thriveCounter = overlayContent.map(o => o[23]);
 
 export const wheelData = {
   // T0–T2: Single labels
