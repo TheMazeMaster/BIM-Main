@@ -220,3 +220,9 @@ Then open [http://localhost:8000/index.html](http://localhost:8000/index.html) i
 There are currently no automated tests for this project.
 The `npm test` script is intentionally empty and exists only to
 prevent errors when running `npm test`.
+
+### Data validation
+
+Run `npm run validate` to ensure `overlayContent.js` still contains exactly 132
+entries and each entry has 25 fields. This quick check guards against accidental
+data corruption.

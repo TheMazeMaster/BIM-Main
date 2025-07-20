@@ -5,6 +5,7 @@
   "type": "module",
   "license": "CC-BY-NC-4.0",
   "scripts": {
-    "test": ""
+    "test": "",
+    "validate": "node validate.js"
   }
 }
