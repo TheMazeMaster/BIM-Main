@@ -107,9 +107,9 @@ No calculations are auto-derived — all index math is hard-defined
 
 labelList: Local list of strings or generated (e.g. T5 modifiers)
 
-labelListSource: Used in T6 to dynamically switch datasets
+labelListSource: Used in T6 to switch which overlay field is shown
 
-availableSources: ["overlayContent"]
+availableSources: ["quotes", "emotion", "tone", "behavior", "thriveCounter"]
 
 T6 labels now come entirely from `overlayContent.js`, which contains 132
 rows of 25 fields. Key indexes are:
@@ -121,8 +121,7 @@ rows of 25 fields. Key indexes are:
 * **23** – thrive counter quote
 
 Use these indexes when building labels from the dataset. The previous
-datasets (`quotes.js`, `emotion.js`, `tone.js`, `behavior.js`,
-`thriveCounter.js`) are no longer used.
+stand‑alone dataset files have been removed.
 
 🧪 T6 Data Switching
 
