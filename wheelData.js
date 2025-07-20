@@ -1,10 +1,12 @@
 // === wheelData.js — BIM Masterwheel Data ===
 
-import { quotes } from './quotes.js';
-import { emotion } from './emotion.js';
-import { tone } from './tone.js';
-import { behaviorDescriptions as behavior } from './behavior.js';
-import { thriveCounter } from './thriveCounter.js';
+import overlayContent from './overlayContent.js';
+
+const quotes = overlayContent.map(o => o[21]);
+const emotion = overlayContent.map(o => o[22]);
+const tone = overlayContent.map(o => o[20]);
+const behavior = overlayContent.map(o => o[19]);
+const thriveCounter = overlayContent.map(o => o[24]);
 
 export const wheelData = {
   // T0–T2: Single labels
