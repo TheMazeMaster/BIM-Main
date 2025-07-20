@@ -109,11 +109,20 @@ labelList: Local list of strings or generated (e.g. T5 modifiers)
 
 labelListSource: Used in T6 to dynamically switch datasets
 
-availableSources: ["quotes", "emotion", "tone", "behavior", "thriveCounter"]
+availableSources: ["overlayContent"]
 
-Data is modular — content can be swapped by toggling source.
-Edit `wheelData.js` and the dataset files (`quotes.js`, `emotion.js`,
-`tone.js`, `behavior.js`, `thriveCounter.js`) to change or add content.
+T6 labels now come entirely from `overlayContent.js`, which contains 132
+rows of 25 fields. Key indexes are:
+
+* **17** – behaviour text
+* **18** – tone descriptor
+* **19** – quote
+* **20** – emotion/feeling
+* **23** – thrive counter quote
+
+Use these indexes when building labels from the dataset. The previous
+datasets (`quotes.js`, `emotion.js`, `tone.js`, `behavior.js`,
+`thriveCounter.js`) are no longer used.
 
 🧪 T6 Data Switching
 
