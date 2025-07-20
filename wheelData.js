@@ -52,6 +52,7 @@ export const wheelData = {
   })(),
 
   // T6 variants
+  overlayContent,
   quotes,
   emotion,
   tone,
