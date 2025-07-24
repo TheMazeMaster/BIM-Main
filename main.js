@@ -47,13 +47,69 @@ function updateInfoPanel(index) {
   const data = wheelData.overlayContent?.[index];
   if (!panel || !data) return;
 
-  const idTag = `<span style="float:right;color:gray;font-size:0.8rem">${data[0]}</span>`;
+  const sections = [
+    {
+      title: 'Grounding: Naming the Pattern',
+      items: [
+        ['Description', data[1]],
+        ['Academic Framing', data[2]],
+        ['Philosophical Angle', data[3]],
+        ['Alternate Phrasings', data[5]]
+      ]
+    },
+    {
+      title: 'Trigger & Activation: What Sparks It',
+      items: [
+        ['Internal Trigger Phrase', data[4]],
+        ['Behaviour Function', data[6]],
+        ['Goal / Purpose', data[7]],
+        ['Push Vector', data[8]],
+        ['Motion Feel', data[9]]
+      ]
+    },
+    {
+      title: 'Embodied Impact: How It Moves Through',
+      items: [
+        ['Somatic Pattern', data[10]],
+        ['Feltframe', data[11]],
+        ['Narrative Rhythm', data[12]],
+        ['Archetypes', data[13]],
+        ['Simulation Tag', data[14]],
+        ['Intensity Range', data[16]]
+      ]
+    },
+    {
+      title: 'Expression',
+      items: [
+        ['Behaviour', data[17]],
+        ['Tone', data[18]],
+        ['Expression Quote', data[19]],
+        ['Emotion', data[20]]
+      ]
+    },
+    {
+      title: 'Alignment & Edge: How it lands, how it breaks, and how it grows',
+      items: [
+        ['Typical Reaction', data[21]],
+        ['Behavioural Opposite', data[22]],
+        ['Thrive Counter-Quote', data[23]],
+        ['Wisdom', data[24]]
+      ]
+    }
+  ];
+
+  const idTag = `<div class="id-tag">ID: ${data[0]}</div>`;
   panel.innerHTML =
-    `<div>${idTag}<strong>Behavior:</strong> ${data[17]}</div>` +
-    `<div><strong>Tone:</strong> ${data[18]}</div>` +
-    `<div><strong>Quote:</strong> ${data[19]}</div>` +
-    `<div><strong>Emotion:</strong> ${data[20]}</div>` +
-    `<div><strong>Thrive:</strong> ${data[23]}</div>`;
+    idTag +
+    sections
+      .map(sec =>
+        `<div class="info-section"><h4>${sec.title}</h4>` +
+        sec.items
+          .map(([label, val]) => `<div><strong>${label}:</strong> ${val}</div>`) 
+          .join('') +
+        '</div>'
+      )
+      .join('');
 }
 
 // === RENDER ENTRY POINT ===

@@ -163,6 +163,44 @@ anchored near the left edge. Zooming out restores the 500×500 viewport and
 centers the wheel. `TRANSFORM_ORIGIN` (50% 50%) is shared between the CSS
 and JavaScript so the scale happens about the wheel's center.
 
+ℹ️ Info Panel
+--------------
+
+When zoomed in, a side panel displays detailed data for the currently
+selected segment. `updateInfoPanel()` reads from `overlayContent.js` and
+groups fields into five sections:
+
+1. **Grounding: Naming the Pattern**
+   - `1` – Description
+   - `2` – Academic Framing
+   - `3` – Philosophical Angle
+   - `5` – Alternate Phrasings
+2. **Trigger & Activation: What Sparks It**
+   - `4` – Internal Trigger Phrase
+   - `6` – Behaviour Function
+   - `7` – Goal / Purpose
+   - `8` – Push Vector
+   - `9` – Motion Feel
+3. **Embodied Impact: How It Moves Through**
+   - `10` – Somatic Pattern
+   - `11` – Feltframe
+   - `12` – Narrative Rhythm
+   - `13` – Archetypes
+   - `14` – Simulation Tag
+   - `16` – Intensity Range
+4. **Expression**
+   - `17` – Behaviour
+   - `18` – Tone
+   - `19` – Expression Quote
+   - `20` – Emotion
+5. **Alignment & Edge: How it lands, how it breaks, and how it grows**
+   - `21` – Typical Reaction
+   - `22` – Behavioural Opposite
+   - `23` – Thrive Counter-Quote
+   - `24` – Wisdom
+
+The panel appears below the wheel when zoomed in and hides when zoomed out.
+
 🖼️ Overlays
 
 T4–T6 can include visual overlays via overlay block
