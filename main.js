@@ -5,7 +5,8 @@ import { wheelData } from './wheelData.js';
 
 const svg = document.getElementById('dim-wheel');
 // Rotation index for global divisions; modified via the UI
-let currentRotation = 0;
+// Start a quarter-turn offset so that T4 centers align correctly on load
+let currentRotation = wheelConfig.globalDivisionCount / 4;
 // Currently selected overlay index for info panel
 let selectedIndex = 0;
 // Sequential ID generator for arc paths used by arc text
