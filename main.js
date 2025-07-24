@@ -17,7 +17,7 @@ const t4Labels = wheelData.T4;
 const t3Boundaries = (() => {
   const weights = wheelConfig.tiers[3].divisionWeights;
   let sum = 0;
-  return weights.map(w => (sum -= w));
+  return weights.map(w => (sum += w));
 })();
 
 // === VIEWPORT / ZOOM ===
