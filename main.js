@@ -6,6 +6,8 @@ import { wheelData } from './wheelData.js';
 const svg = document.getElementById('dim-wheel');
 // Rotation index for global divisions; modified via the UI
 let currentRotation = 0;
+// Currently selected overlay index for info panel
+let selectedIndex = 0;
 // Sequential ID generator for arc paths used by arc text
 let arcPathCounter = 0;
 
@@ -26,12 +28,31 @@ function updateViewport() {
   if (!viewport) return;
   viewport.classList.toggle('zoomed', isZoomed);
 
+  const infoPanel = document.getElementById('info-panel');
+  if (infoPanel) {
+    infoPanel.style.display = isZoomed ? 'block' : 'none';
+  }
+
   const scale = isZoomed ? ZOOM_SCALE : NORMAL_SCALE;
   const offsetX = isZoomed ? ZOOM_OFFSET_X : NORMAL_OFFSET_X;
   const offsetY = isZoomed ? ZOOM_OFFSET_Y : NORMAL_OFFSET_Y;
 
   // Apply scaling before translation so zoom occurs about the center
   svg.style.transform = `scale(${scale}) translate(${offsetX}px, ${offsetY}px)`;
+}
+
+function updateInfoPanel(index) {
+  const panel = document.getElementById('info-panel');
+  const data = wheelData.overlayContent?.[index];
+  if (!panel || !data) return;
+
+  const idTag = `<span style="float:right;color:gray;font-size:0.8rem">${data[0]}</span>`;
+  panel.innerHTML =
+    `<div>${idTag}<strong>Behavior:</strong> ${data[17]}</div>` +
+    `<div><strong>Tone:</strong> ${data[18]}</div>` +
+    `<div><strong>Quote:</strong> ${data[19]}</div>` +
+    `<div><strong>Emotion:</strong> ${data[20]}</div>` +
+    `<div><strong>Thrive:</strong> ${data[23]}</div>`;
 }
 
 // === RENDER ENTRY POINT ===
@@ -77,7 +98,9 @@ function setupRotationButtons() {
     if (!isNaN(value)) {
       btn.addEventListener('click', () => {
         currentRotation = (currentRotation + value + wheelConfig.globalDivisionCount) % wheelConfig.globalDivisionCount;
+        selectedIndex = (selectedIndex + value + wheelConfig.globalDivisionCount) % wheelConfig.globalDivisionCount;
         renderWheel();
+        updateInfoPanel(selectedIndex);
       });
     }
   });
@@ -527,3 +550,4 @@ setupRotationButtons();
 setupT6Buttons();
 setupZoomButton();
 renderWheel();
+updateInfoPanel(selectedIndex);
