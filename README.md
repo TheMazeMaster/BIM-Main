@@ -149,13 +149,12 @@ The wheel is wrapped in a `.wheel-viewport` container that hides any
 overflow. `main.js` now exposes a pair of static transform presets used by
 `updateViewport()`:
 
-```
-NORMAL_SCALE   = 1
-NORMAL_OFFSET_X = -250
-NORMAL_OFFSET_Y = -250
-ZOOM_SCALE     = 2
-ZOOM_OFFSET_X  = -514
-ZOOM_OFFSET_Y  = -150
+NORMAL_SCALE   = 1.4
+NORMAL_OFFSET_X = -142
+NORMAL_OFFSET_Y = -145
+ZOOM_SCALE     = 1.8
+ZOOM_OFFSET_X  = -275
+ZOOM_OFFSET_Y  = -210
 ```
 
 The **Toggle Zoom** button simply switches between these presets. When
