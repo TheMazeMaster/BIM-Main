@@ -168,7 +168,10 @@ function setupRotationButtons() {
     if (!isNaN(value)) {
       btn.addEventListener('click', () => {
         currentRotation = (currentRotation + value + wheelConfig.globalDivisionCount) % wheelConfig.globalDivisionCount;
-        selectedIndex = (selectedIndex + value + wheelConfig.globalDivisionCount) % wheelConfig.globalDivisionCount;
+        // Adjust the selected index opposite to the rotation direction
+        selectedIndex =
+          (selectedIndex - value + wheelConfig.globalDivisionCount) %
+          wheelConfig.globalDivisionCount;
         renderWheel();
         updateInfoPanel(selectedIndex);
       });
