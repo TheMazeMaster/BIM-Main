@@ -85,15 +85,23 @@ function setupRotationButtons() {
 
 // === T6 DATASET SWITCHING ===
 function setupT6Buttons() {
-  document.querySelectorAll('[data-t6]').forEach(button => {
+  const buttons = document.querySelectorAll('[data-t6]');
+  buttons.forEach(button => {
     const source = button.getAttribute('data-t6');
     if (source) {
       button.addEventListener('click', () => {
         wheelConfig.tiers[6].labelListSource = source;
         renderWheel();
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
       });
     }
   });
+
+  const defaultBtn = document.querySelector('[data-t6="behavior"]');
+  if (defaultBtn) {
+    defaultBtn.classList.add('active');
+  }
 }
 
 // === ZOOM CONTROL ===

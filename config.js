@@ -305,7 +305,7 @@ const tiers = [  // Master configuration for all wheel rings
     outerRadius: 500,
     rotationLocked: false,
     divisionWeights: t4DivisionAngles.map(() => 1),
-    labelListSource: "overlayContent",
+    labelListSource: "behavior",
     availableSources: ["overlayContent"],
     labelStyle: {
       type: "radial",
