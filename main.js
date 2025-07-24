@@ -12,6 +12,14 @@ let selectedIndex = 0;
 // Sequential ID generator for arc paths used by arc text
 let arcPathCounter = 0;
 
+const t3Labels = wheelData.T3;
+const t4Labels = wheelData.T4;
+const t3Boundaries = (() => {
+  const weights = wheelConfig.tiers[3].divisionWeights;
+  let sum = 0;
+  return weights.map(w => (sum += w));
+})();
+
 // === VIEWPORT / ZOOM ===
 let isZoomed = false;
 const viewport = document.querySelector('.wheel-viewport');
@@ -46,6 +54,12 @@ function updateInfoPanel(index) {
   const panel = document.getElementById('info-panel');
   const data = wheelData.overlayContent?.[index];
   if (!panel || !data) return;
+
+  const t4Index = Math.floor(index / 4);
+  const t3Index = t3Boundaries.findIndex(b => index < b);
+  const locationLine =
+    `<div class="info-location">Current = ${t3Labels[t3Index]} → ` +
+    `${t4Labels[t4Index]}, ${data[15]} (ID: ${data[0]})</div>`;
 
   const sections = [
     {
@@ -98,14 +112,13 @@ function updateInfoPanel(index) {
     }
   ];
 
-  const idTag = `<div class="id-tag">ID: ${data[0]}</div>`;
   panel.innerHTML =
-    idTag +
+    locationLine +
     sections
       .map(sec =>
         `<div class="info-section"><h4>${sec.title}</h4>` +
         sec.items
-          .map(([label, val]) => `<div><strong>${label}:</strong> ${val}</div>`) 
+          .map(([label, val]) => `<div><strong>${label}:</strong> ${val}</div>`)
           .join('') +
         '</div>'
       )
