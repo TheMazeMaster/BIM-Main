@@ -119,3 +119,73 @@ button.active {
   font-size: 1.1rem;
   color: #333;
 }
+
+.mobile-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.mobile-location {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fafafa;
+  padding: 12px;
+  display: grid;
+  gap: 6px;
+}
+
+.mobile-main {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+}
+
+.mobile-content-strip {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+  background: #fff;
+}
+
+.mobile-row {
+  border-radius: 6px;
+  padding: 10px;
+  border: 1px solid #e3e3e3;
+}
+
+.mobile-row.current {
+  background: #f0f4ff;
+  border-color: #8099ff;
+  font-weight: 600;
+}
+
+.mobile-row.adjacent {
+  opacity: 0.65;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-nav button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mobile-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.mobile-tab.active {
+  background: #2f4cb6;
+  color: #fff;
+  border-color: #2f4cb6;
+}
