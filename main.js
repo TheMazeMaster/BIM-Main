@@ -9,6 +9,7 @@ const svg = document.getElementById('dim-wheel');
 let currentRotation = wheelConfig.globalDivisionCount / 4;
 // Currently selected overlay index for info panel
 let selectedIndex = 0;
+let viewMode = 'wheel';
 // Sequential ID generator for arc paths used by arc text
 let arcPathCounter = 0;
 
@@ -125,6 +126,58 @@ function updateInfoPanel(index) {
       .join('');
 }
 
+function getInitialViewMode() {
+  const params = new URLSearchParams(window.location.search);
+  const view = params.get('view');
+  return view === 'mobile' || view === 'wheel' ? view : 'wheel';
+}
+
+function setViewVisibility(mode) {
+  const ids = [
+    'rotation-controls',
+    't6-controls',
+    'zoom-controls',
+    'info-panel'
+  ];
+  const wheelViewport = document.querySelector('.wheel-viewport');
+  const mobileView = document.getElementById('mobile-view');
+  const showWheel = mode === 'wheel';
+
+  ids.forEach(id => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.classList.toggle('hidden', !showWheel);
+    }
+  });
+
+  if (wheelViewport) {
+    wheelViewport.classList.toggle('hidden', !showWheel);
+  }
+
+  if (mobileView) {
+    mobileView.classList.toggle('hidden', showWheel);
+  }
+}
+
+function renderMobilePlaceholder() {
+  const mobileView = document.getElementById('mobile-view');
+  if (mobileView) {
+    mobileView.textContent = 'Mobile BIM view coming next';
+  }
+}
+
+function renderApp() {
+  setViewVisibility(viewMode);
+
+  if (viewMode === 'mobile') {
+    renderMobilePlaceholder();
+    return;
+  }
+
+  renderWheel();
+  updateInfoPanel(selectedIndex);
+}
+
 // === RENDER ENTRY POINT ===
 function renderWheel() {
   arcPathCounter = 0;
@@ -172,8 +225,7 @@ function setupRotationButtons() {
         selectedIndex =
           (selectedIndex - value + wheelConfig.globalDivisionCount) %
           wheelConfig.globalDivisionCount;
-        renderWheel();
-        updateInfoPanel(selectedIndex);
+        renderApp();
       });
     }
   });
@@ -187,7 +239,7 @@ function setupT6Buttons() {
     if (source) {
       button.addEventListener('click', () => {
         wheelConfig.tiers[6].labelListSource = source;
-        renderWheel();
+        renderApp();
         buttons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
       });
@@ -627,8 +679,8 @@ function polarToCartesian(cx, cy, r, angleDeg) {
 }
 
 // === INIT ===
+viewMode = getInitialViewMode();
 setupRotationButtons();
 setupT6Buttons();
 setupZoomButton();
-renderWheel();
-updateInfoPanel(selectedIndex);
+renderApp();
