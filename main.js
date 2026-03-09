@@ -53,11 +53,11 @@ function updateViewport() {
 
 function updateInfoPanel(index) {
   const panel = document.getElementById('info-panel');
-  const data = wheelData.overlayContent?.[index];
+  const data = getOverlayRow(index);
   if (!panel || !data) return;
 
-  const t4Index = Math.floor(index / 4);
-  const t3Index = t3Boundaries.findIndex(b => index < b);
+  const t4Index = getT4Index(index);
+  const t3Index = getT3Index(index);
   const locationLine =
     `<div class="info-location">Current = ${t3Labels[t3Index]} → ` +
     `${t4Labels[t4Index]}, ${data[15]} (ID: ${data[0]})</div>`;
@@ -126,10 +126,59 @@ function updateInfoPanel(index) {
       .join('');
 }
 
+function wrapIndex(index) {
+  const total = wheelConfig.globalDivisionCount;
+  return (index + total) % total;
+}
+
+function getOverlayRow(index) {
+  return wheelData.overlayContent?.[wrapIndex(index)] || null;
+}
+
+function getT4Index(index) {
+  return Math.floor(wrapIndex(index) / 4);
+}
+
+function getT3Index(index) {
+  const normalizedIndex = wrapIndex(index);
+  return t3Boundaries.findIndex(b => normalizedIndex < b);
+}
+
+function getLocationData(index) {
+  const row = getOverlayRow(index);
+  const t3Index = getT3Index(index);
+  const t4Index = getT4Index(index);
+  return {
+    instinct: t3Labels[t3Index] || '',
+    behaviorGroup: t4Labels[t4Index] || '',
+    intensity: row?.[15] || '',
+    id: row?.[0] || ''
+  };
+}
+
+function getActiveSource() {
+  return wheelConfig.tiers[6].labelListSource;
+}
+
+function getActiveSourceValue(index) {
+  const source = getActiveSource();
+  const values = wheelData[source];
+  if (!Array.isArray(values)) return '';
+  return values[wrapIndex(index)] || '';
+}
+
 function getInitialViewMode() {
   const params = new URLSearchParams(window.location.search);
   const view = params.get('view');
   return view === 'mobile' || view === 'wheel' ? view : 'wheel';
+}
+
+
+function syncT6ButtonStates() {
+  const activeSource = getActiveSource();
+  document.querySelectorAll('[data-t6]').forEach(button => {
+    button.classList.toggle('active', button.getAttribute('data-t6') === activeSource);
+  });
 }
 
 function setViewVisibility(mode) {
@@ -159,18 +208,76 @@ function setViewVisibility(mode) {
   }
 }
 
-function renderMobilePlaceholder() {
+function renderMobileView() {
   const mobileView = document.getElementById('mobile-view');
-  if (mobileView) {
-    mobileView.textContent = 'Mobile BIM view coming next';
-  }
+  if (!mobileView) return;
+
+  const location = getLocationData(selectedIndex);
+  const prevIndex = wrapIndex(selectedIndex - 1);
+  const currentIndex = wrapIndex(selectedIndex);
+  const nextIndex = wrapIndex(selectedIndex + 1);
+  const activeSource = getActiveSource();
+
+  mobileView.innerHTML = `
+    <div class="mobile-shell">
+      <section class="mobile-location">
+        <div><strong>Instinct:</strong> ${location.instinct}</div>
+        <div><strong>Behaviour Group:</strong> ${location.behaviorGroup}</div>
+        <div><strong>Intensity:</strong> ${location.intensity}</div>
+        <div><strong>ID:</strong> ${location.id}</div>
+      </section>
+
+      <div class="mobile-main">
+        <section class="mobile-content-strip">
+          <div class="mobile-row adjacent">${getActiveSourceValue(prevIndex)}</div>
+          <div class="mobile-row current">${getActiveSourceValue(currentIndex)}</div>
+          <div class="mobile-row adjacent">${getActiveSourceValue(nextIndex)}</div>
+        </section>
+
+        <nav class="mobile-nav" aria-label="Mobile row navigation">
+          <button type="button" data-mobile-nav="up">Up</button>
+          <button type="button" data-mobile-nav="down">Down</button>
+          <button type="button" data-mobile-nav="more" disabled>More</button>
+        </nav>
+      </div>
+
+      <section class="mobile-tabs" aria-label="Content sources">
+        <button type="button" class="mobile-tab ${activeSource === 'quotes' ? 'active' : ''}" data-mobile-t6="quotes">Quotes</button>
+        <button type="button" class="mobile-tab ${activeSource === 'emotion' ? 'active' : ''}" data-mobile-t6="emotion">Emotions</button>
+        <button type="button" class="mobile-tab ${activeSource === 'tone' ? 'active' : ''}" data-mobile-t6="tone">Tone</button>
+        <button type="button" class="mobile-tab ${activeSource === 'behavior' ? 'active' : ''}" data-mobile-t6="behavior">Behavior</button>
+        <button type="button" class="mobile-tab ${activeSource === 'thriveCounter' ? 'active' : ''}" data-mobile-t6="thriveCounter">Thrive</button>
+      </section>
+    </div>
+  `;
+
+  mobileView.querySelector('[data-mobile-nav="up"]')?.addEventListener('click', () => {
+    selectedIndex = wrapIndex(selectedIndex - 1);
+    renderApp();
+  });
+
+  mobileView.querySelector('[data-mobile-nav="down"]')?.addEventListener('click', () => {
+    selectedIndex = wrapIndex(selectedIndex + 1);
+    renderApp();
+  });
+
+  mobileView.querySelectorAll('[data-mobile-t6]').forEach(button => {
+    button.addEventListener('click', () => {
+      const source = button.getAttribute('data-mobile-t6');
+      if (!source) return;
+      wheelConfig.tiers[6].labelListSource = source;
+      renderApp();
+    });
+  });
 }
 
 function renderApp() {
   setViewVisibility(viewMode);
 
+  syncT6ButtonStates();
+
   if (viewMode === 'mobile') {
-    renderMobilePlaceholder();
+    renderMobileView();
     return;
   }
 
@@ -240,16 +347,10 @@ function setupT6Buttons() {
       button.addEventListener('click', () => {
         wheelConfig.tiers[6].labelListSource = source;
         renderApp();
-        buttons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
       });
     }
   });
 
-  const defaultBtn = document.querySelector('[data-t6="behavior"]');
-  if (defaultBtn) {
-    defaultBtn.classList.add('active');
-  }
 }
 
 // === ZOOM CONTROL ===
