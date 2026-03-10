@@ -237,15 +237,15 @@ function renderMobileView() {
         <div class="mobile-topbar-meta">
           <div class="mobile-meta-item">
             <span class="mobile-meta-label">Instinct</span>
-            <span class="mobile-meta-value">${location.instinct}</span>
+            <button type="button" class="mobile-meta-value mobile-meta-control" data-mobile-meta="instinct">${location.instinct}</button>
           </div>
           <div class="mobile-meta-item">
             <span class="mobile-meta-label">Behaviour Group</span>
-            <span class="mobile-meta-value">${location.behaviorGroup}</span>
+            <button type="button" class="mobile-meta-value mobile-meta-control" data-mobile-meta="group">${location.behaviorGroup}</button>
           </div>
           <div class="mobile-meta-item">
             <span class="mobile-meta-label">Intensity</span>
-            <span class="mobile-meta-value">${intensity}</span>
+            <button type="button" class="mobile-meta-value mobile-meta-control" data-mobile-meta="intensity">${intensity}</button>
           </div>
         </div>
         <nav class="mobile-nav" aria-label="Mobile state navigation">
@@ -267,6 +267,30 @@ function renderMobileView() {
 
   mobileView.querySelector('[data-mobile-nav="next"]')?.addEventListener('click', () => {
     selectedIndex = wrapIndex(selectedIndex + 1);
+    renderApp();
+  });
+
+  mobileView.querySelector('[data-mobile-meta="intensity"]')?.addEventListener('click', () => {
+    const currentGroupBase = Math.floor(selectedIndex / 4) * 4;
+    const nextIntensityOffset = (selectedIndex % 4 + 1) % 4;
+    selectedIndex = wrapIndex(currentGroupBase + nextIntensityOffset);
+    renderApp();
+  });
+
+  mobileView.querySelector('[data-mobile-meta="group"]')?.addEventListener('click', () => {
+    const currentGroupIndex = Math.floor(selectedIndex / 4);
+    const currentIntensityOffset = selectedIndex % 4;
+    const totalGroups = Math.floor(wheelConfig.globalDivisionCount / 4);
+    const nextGroupIndex = (currentGroupIndex + 1) % totalGroups;
+    selectedIndex = wrapIndex(nextGroupIndex * 4 + currentIntensityOffset);
+    renderApp();
+  });
+
+  mobileView.querySelector('[data-mobile-meta="instinct"]')?.addEventListener('click', () => {
+    const currentInstinctIndex = getT3Index(selectedIndex);
+    const nextInstinctIndex = (currentInstinctIndex + 1) % t3Boundaries.length;
+    const nextInstinctStart = nextInstinctIndex === 0 ? 0 : t3Boundaries[nextInstinctIndex - 1];
+    selectedIndex = wrapIndex(nextInstinctStart);
     renderApp();
   });
 }
