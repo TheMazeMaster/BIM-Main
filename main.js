@@ -64,33 +64,30 @@ function updateInfoPanel(index) {
 
   const sections = [
     {
-      title: 'Grounding: Naming the Pattern',
+      title: 'Pattern',
       items: [
         ['Description', data[1]],
         ['Academic Framing', data[2]],
         ['Philosophical Angle', data[3]],
-        ['Alternate Phrasings', data[5]]
+        ['Alternates', data[5]]
       ]
     },
     {
-      title: 'Trigger & Activation: What Sparks It',
+      title: 'Activation',
       items: [
-        ['Internal Trigger Phrase', data[4]],
-        ['Behaviour Function', data[6]],
-        ['Goal / Purpose', data[7]],
-        ['Push Vector', data[8]],
-        ['Motion Feel', data[9]]
+        ['Trigger', data[4]],
+        ['Function', data[6]],
+        ['Goal', data[7]]
       ]
     },
     {
-      title: 'Embodied Impact: How It Moves Through',
+      title: 'Energy & Motion — Embodied Pattern',
       items: [
-        ['Somatic Pattern', data[10]],
+        ['Push', data[8]],
+        ['Motion', data[9]],
+        ['Somatic', data[10]],
         ['Feltframe', data[11]],
-        ['Narrative Rhythm', data[12]],
-        ['Archetypes', data[13]],
-        ['Simulation Tag', data[14]],
-        ['Intensity Range', data[16]]
+        ['Rhythm', data[12]]
       ]
     },
     {
@@ -98,16 +95,16 @@ function updateInfoPanel(index) {
       items: [
         ['Behaviour', data[17]],
         ['Tone', data[18]],
-        ['Expression Quote', data[19]],
-        ['Emotion', data[20]]
+        ['Emotion', data[20]],
+        ['Quote', data[19]]
       ]
     },
     {
-      title: 'Alignment & Edge: How it lands, how it breaks, and how it grows',
+      title: 'Alignment & Growth',
       items: [
-        ['Typical Reaction', data[21]],
-        ['Behavioural Opposite', data[22]],
-        ['Thrive Counter-Quote', data[23]],
+        ['Reaction', data[21]],
+        ['Opposite', data[22]],
+        ['Thrive Quote', data[23]],
         ['Wisdom', data[24]]
       ]
     }
@@ -117,9 +114,12 @@ function updateInfoPanel(index) {
     locationLine +
     sections
       .map(sec =>
-        `<div class="info-section"><h4>${sec.title}</h4>` +
+        `<div class="bim-card"><div class="bim-card-title">${sec.title}</div>` +
         sec.items
-          .map(([label, val]) => `<div><strong>${label}:</strong> ${val}</div>`)
+          .map(
+            ([label, val]) =>
+              `<div class="bim-field"><span class="bim-label">${label}:</span><span class="bim-value">${val}</span></div>`
+          )
           .join('') +
         '</div>'
       )
