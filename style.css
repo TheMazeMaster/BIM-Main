@@ -126,15 +126,14 @@ button.active {
 }
 
 #mobile-view {
-  width: min(100%, 430px);
+  width: min(100%, 460px);
   margin: 12px auto 0;
-  padding: 14px;
+  padding: 12px;
   border: 1px solid #cfd3da;
-  border-radius: 16px;
+  border-radius: 14px;
   box-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
   background: #fff;
-  text-align: center;
-  font-size: 1rem;
+  font-size: 0.96rem;
   box-sizing: border-box;
   color: #333;
 }
@@ -142,97 +141,87 @@ button.active {
 .mobile-shell {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  text-align: left;
-}
-
-.mobile-location {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #fafafa;
-  padding: 10px 12px;
-  display: grid;
-  gap: 4px;
-}
-
-.mobile-main {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 82px;
   gap: 10px;
-  align-items: stretch;
 }
 
-.mobile-content-strip {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 8px;
+.mobile-topbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: start;
+  border: 1px solid #d9dde5;
+  border-radius: 10px;
+  background: #f7f9fc;
+  padding: 10px;
+}
+
+.mobile-topbar-meta {
   display: grid;
   gap: 6px;
-  background: #fff;
 }
 
-.mobile-row {
-  border-radius: 6px;
-  padding: 8px;
-  border: 1px solid #e3e3e3;
-  display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
+.mobile-meta-item {
+  display: flex;
   gap: 8px;
-  align-items: start;
+  flex-wrap: wrap;
 }
 
-.mobile-row-intensity {
+.mobile-meta-label {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #566076;
   font-weight: 700;
-  color: #2f4cb6;
 }
 
-.mobile-row-value {
-  min-width: 0;
-}
-
-.mobile-row.current {
-  background: #f0f4ff;
-  border-color: #8099ff;
-  font-weight: 600;
-}
-
-.mobile-row.adjacent {
-  opacity: 0.65;
+.mobile-meta-value {
+  font-weight: 700;
+  color: #1f2a44;
 }
 
 .mobile-nav {
   display: flex;
-  flex-direction: column;
   gap: 6px;
 }
 
 .mobile-nav button {
-  width: 100%;
-  min-height: 40px;
-  padding: 6px 8px;
+  min-width: 38px;
+  min-height: 34px;
+  padding: 4px 8px;
+  font-size: 0.92rem;
+  line-height: 1;
 }
 
-.mobile-nav button[disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.mobile-tabs {
+.mobile-report {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 6px;
+  gap: 10px;
 }
 
-.mobile-tab {
-  min-height: 38px;
-  padding: 6px 4px;
-  font-size: 0.88rem;
+#mobile-view .bim-card {
+  margin-bottom: 0;
+  border: 1px solid #eceff4;
+  border-radius: 10px;
+  padding: 12px;
 }
 
-.mobile-tab.active {
-  background: #2f4cb6;
-  color: #fff;
-  border-color: #2f4cb6;
+#mobile-view .bim-card-title {
+  font-size: 15px;
+  margin-bottom: 7px;
+}
+
+#mobile-view .bim-field {
+  grid-template-columns: 128px minmax(0, 1fr);
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+#mobile-view .bim-label {
+  font-size: 12px;
+}
+
+#mobile-view .bim-value {
+  font-size: 13px;
+  line-height: 1.35;
 }
 
 @media (min-width: 620px) {
@@ -241,20 +230,7 @@ button.active {
     padding: 16px;
   }
 
-  .mobile-main {
-    grid-template-columns: minmax(0, 1fr) 96px;
-    gap: 12px;
-  }
-
-  .mobile-row {
-    grid-template-columns: 92px minmax(0, 1fr);
-  }
-
   .mobile-nav button {
-    min-height: 44px;
-  }
-
-  .mobile-tab {
-    font-size: 0.92rem;
+    min-height: 36px;
   }
 }

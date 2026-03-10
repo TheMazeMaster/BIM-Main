@@ -62,14 +62,33 @@ function updateInfoPanel(index) {
     `<div class="info-location">Current = ${t3Labels[t3Index]} → ` +
     `${t4Labels[t4Index]}, ${data[15]} (ID: ${data[0]})</div>`;
 
-  const sections = [
+  const sections = getNarrativeSections(data);
+
+  panel.innerHTML =
+    locationLine +
+    sections
+      .map(sec =>
+        `<div class="bim-card"><div class="bim-card-title">${sec.title}</div>` +
+        sec.items
+          .map(
+            ([label, val]) =>
+              `<div class="bim-field"><span class="bim-label">${label}:</span><span class="bim-value">${val}</span></div>`
+          )
+          .join('') +
+        '</div>'
+      )
+      .join('');
+}
+
+function getNarrativeSections(data) {
+  return [
     {
       title: 'Pattern',
       items: [
         ['Description', data[1]],
         ['Academic Framing', data[2]],
         ['Philosophical Angle', data[3]],
-        ['Alternates', data[5]]
+        ['Alternate Phrasings', data[5]]
       ]
     },
     {
@@ -109,21 +128,21 @@ function updateInfoPanel(index) {
       ]
     }
   ];
+}
 
-  panel.innerHTML =
-    locationLine +
-    sections
-      .map(sec =>
-        `<div class="bim-card"><div class="bim-card-title">${sec.title}</div>` +
-        sec.items
-          .map(
-            ([label, val]) =>
-              `<div class="bim-field"><span class="bim-label">${label}:</span><span class="bim-value">${val}</span></div>`
-          )
-          .join('') +
-        '</div>'
-      )
-      .join('');
+function renderNarrativeCards(sections) {
+  return sections
+    .map(sec =>
+      `<div class="bim-card"><div class="bim-card-title">${sec.title}</div>` +
+      sec.items
+        .map(
+          ([label, val]) =>
+            `<div class="bim-field"><span class="bim-label">${label}:</span><span class="bim-value">${val}</span></div>`
+        )
+        .join('') +
+      '</div>'
+    )
+    .join('');
 }
 
 function wrapIndex(index) {
@@ -155,13 +174,6 @@ function getLocationData(index) {
 
 function getActiveSource() {
   return wheelConfig.tiers[6].labelListSource;
-}
-
-function getActiveSourceValue(index) {
-  const source = getActiveSource();
-  const values = wheelData[source];
-  if (!Array.isArray(values)) return '';
-  return values[wrapIndex(index)] || '';
 }
 
 function getIntensityLabel(index) {
@@ -212,71 +224,50 @@ function setViewVisibility(mode) {
 
 function renderMobileView() {
   const mobileView = document.getElementById('mobile-view');
-  if (!mobileView) return;
+  const data = getOverlayRow(selectedIndex);
+  if (!mobileView || !data) return;
 
   const location = getLocationData(selectedIndex);
-  const prevIndex = wrapIndex(selectedIndex - 1);
-  const currentIndex = wrapIndex(selectedIndex);
-  const nextIndex = wrapIndex(selectedIndex + 1);
-  const activeSource = getActiveSource();
+  const intensity = getIntensityLabel(selectedIndex);
+  const sections = getNarrativeSections(data);
 
   mobileView.innerHTML = `
     <div class="mobile-shell">
-      <section class="mobile-location">
-        <div><strong>Instinct:</strong> ${location.instinct}</div>
-        <div><strong>Behaviour Group:</strong> ${location.behaviorGroup}</div>
+      <section class="mobile-topbar" aria-label="Current BIM state">
+        <div class="mobile-topbar-meta">
+          <div class="mobile-meta-item">
+            <span class="mobile-meta-label">Instinct</span>
+            <span class="mobile-meta-value">${location.instinct}</span>
+          </div>
+          <div class="mobile-meta-item">
+            <span class="mobile-meta-label">Behaviour Group</span>
+            <span class="mobile-meta-value">${location.behaviorGroup}</span>
+          </div>
+          <div class="mobile-meta-item">
+            <span class="mobile-meta-label">Intensity</span>
+            <span class="mobile-meta-value">${intensity}</span>
+          </div>
+        </div>
+        <nav class="mobile-nav" aria-label="Mobile state navigation">
+          <button type="button" data-mobile-nav="prev" aria-label="Previous BIM state">◀</button>
+          <button type="button" data-mobile-nav="next" aria-label="Next BIM state">▶</button>
+        </nav>
       </section>
 
-      <div class="mobile-main">
-        <section class="mobile-content-strip">
-          <div class="mobile-row adjacent">
-            <div class="mobile-row-intensity">${getIntensityLabel(prevIndex)}</div>
-            <div class="mobile-row-value">${getActiveSourceValue(prevIndex)}</div>
-          </div>
-          <div class="mobile-row current">
-            <div class="mobile-row-intensity">${getIntensityLabel(currentIndex)}</div>
-            <div class="mobile-row-value">${getActiveSourceValue(currentIndex)}</div>
-          </div>
-          <div class="mobile-row adjacent">
-            <div class="mobile-row-intensity">${getIntensityLabel(nextIndex)}</div>
-            <div class="mobile-row-value">${getActiveSourceValue(nextIndex)}</div>
-          </div>
-        </section>
-
-        <nav class="mobile-nav" aria-label="Mobile row navigation">
-          <button type="button" data-mobile-nav="up">Up</button>
-          <button type="button" data-mobile-nav="down">Down</button>
-          <button type="button" data-mobile-nav="more" disabled>More</button>
-        </nav>
-      </div>
-
-      <section class="mobile-tabs" aria-label="Content sources">
-        <button type="button" class="mobile-tab ${activeSource === 'quotes' ? 'active' : ''}" data-mobile-t6="quotes">Quotes</button>
-        <button type="button" class="mobile-tab ${activeSource === 'emotion' ? 'active' : ''}" data-mobile-t6="emotion">Emotions</button>
-        <button type="button" class="mobile-tab ${activeSource === 'tone' ? 'active' : ''}" data-mobile-t6="tone">Tone</button>
-        <button type="button" class="mobile-tab ${activeSource === 'behavior' ? 'active' : ''}" data-mobile-t6="behavior">Behavior</button>
-        <button type="button" class="mobile-tab ${activeSource === 'thriveCounter' ? 'active' : ''}" data-mobile-t6="thriveCounter">Thrive</button>
+      <section class="mobile-report" aria-label="BIM Behaviour Narrative report">
+        ${renderNarrativeCards(sections)}
       </section>
     </div>
   `;
 
-  mobileView.querySelector('[data-mobile-nav="up"]')?.addEventListener('click', () => {
+  mobileView.querySelector('[data-mobile-nav="prev"]')?.addEventListener('click', () => {
     selectedIndex = wrapIndex(selectedIndex - 1);
     renderApp();
   });
 
-  mobileView.querySelector('[data-mobile-nav="down"]')?.addEventListener('click', () => {
+  mobileView.querySelector('[data-mobile-nav="next"]')?.addEventListener('click', () => {
     selectedIndex = wrapIndex(selectedIndex + 1);
     renderApp();
-  });
-
-  mobileView.querySelectorAll('[data-mobile-t6]').forEach(button => {
-    button.addEventListener('click', () => {
-      const source = button.getAttribute('data-mobile-t6');
-      if (!source) return;
-      wheelConfig.tiers[6].labelListSource = source;
-      renderApp();
-    });
   });
 }
 
