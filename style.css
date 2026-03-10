@@ -8,13 +8,6 @@ body {
   background: #f4f4f4;
 }
 
-/* === TITLE === */
-h2 {
-  margin-top: 24px;
-  font-size: 2em;
-  color: #333;
-}
-
 /* === ROTATION BUTTONS === */
 #rotation-controls {
   margin: 16px 0 8px;
@@ -155,6 +148,19 @@ button.active {
   border-radius: 6px;
   padding: 10px;
   border: 1px solid #e3e3e3;
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.mobile-row-intensity {
+  font-weight: 700;
+  color: #2f4cb6;
+}
+
+.mobile-row-value {
+  min-width: 0;
 }
 
 .mobile-row.current {

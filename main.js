@@ -145,14 +145,11 @@ function getT3Index(index) {
 }
 
 function getLocationData(index) {
-  const row = getOverlayRow(index);
   const t3Index = getT3Index(index);
   const t4Index = getT4Index(index);
   return {
     instinct: t3Labels[t3Index] || '',
-    behaviorGroup: t4Labels[t4Index] || '',
-    intensity: row?.[15] || '',
-    id: row?.[0] || ''
+    behaviorGroup: t4Labels[t4Index] || ''
   };
 }
 
@@ -165,6 +162,11 @@ function getActiveSourceValue(index) {
   const values = wheelData[source];
   if (!Array.isArray(values)) return '';
   return values[wrapIndex(index)] || '';
+}
+
+function getIntensityLabel(index) {
+  const row = getOverlayRow(index);
+  return row?.[15] || '';
 }
 
 function getInitialViewMode() {
@@ -223,15 +225,22 @@ function renderMobileView() {
       <section class="mobile-location">
         <div><strong>Instinct:</strong> ${location.instinct}</div>
         <div><strong>Behaviour Group:</strong> ${location.behaviorGroup}</div>
-        <div><strong>Intensity:</strong> ${location.intensity}</div>
-        <div><strong>ID:</strong> ${location.id}</div>
       </section>
 
       <div class="mobile-main">
         <section class="mobile-content-strip">
-          <div class="mobile-row adjacent">${getActiveSourceValue(prevIndex)}</div>
-          <div class="mobile-row current">${getActiveSourceValue(currentIndex)}</div>
-          <div class="mobile-row adjacent">${getActiveSourceValue(nextIndex)}</div>
+          <div class="mobile-row adjacent">
+            <div class="mobile-row-intensity">${getIntensityLabel(prevIndex)}</div>
+            <div class="mobile-row-value">${getActiveSourceValue(prevIndex)}</div>
+          </div>
+          <div class="mobile-row current">
+            <div class="mobile-row-intensity">${getIntensityLabel(currentIndex)}</div>
+            <div class="mobile-row-value">${getActiveSourceValue(currentIndex)}</div>
+          </div>
+          <div class="mobile-row adjacent">
+            <div class="mobile-row-intensity">${getIntensityLabel(nextIndex)}</div>
+            <div class="mobile-row-value">${getActiveSourceValue(nextIndex)}</div>
+          </div>
         </section>
 
         <nav class="mobile-nav" aria-label="Mobile row navigation">
